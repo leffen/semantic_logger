@@ -41,6 +41,7 @@ module SemanticLogger
     autoload :Tcp,              'semantic_logger/appender/tcp'
     autoload :Udp,              'semantic_logger/appender/udp'
     autoload :Wrapper,          'semantic_logger/appender/wrapper'
+    autoload :Wrapper,          'semantic_logger/appender/rabbit'
   end
 
   module Concerns
