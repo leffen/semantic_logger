@@ -6,7 +6,7 @@ require 'semantic_logger/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = 'semantic_loggerx'
+  spec.name        = 'semantic_logger'
   spec.version     = SemanticLogger::VERSION
   spec.platform    = Gem::Platform::RUBY
   spec.authors     = ['Reid Morrison']
