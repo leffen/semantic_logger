@@ -12,7 +12,7 @@ rescue LoadError
 end
 
 
-class SemanticLogger::Appender::RabbitAppender < SemanticLogger::Subscriber
+class SemanticLogger::Appender::Rabbit < SemanticLogger::Subscriber
 
   # Map Semantic Logger levels to Graylog levels
   LEVEL_MAP = {
