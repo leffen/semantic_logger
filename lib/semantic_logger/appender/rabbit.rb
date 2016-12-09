@@ -12,7 +12,6 @@ rescue LoadError
 end
 
 
-
 class SemanticLogger::Appender::RabbitAppender < SemanticLogger::Subscriber
 
   # Map Semantic Logger levels to Graylog levels
@@ -53,7 +52,7 @@ class SemanticLogger::Appender::RabbitAppender < SemanticLogger::Subscriber
     h[:level] = map_level(log)
     h[:level_str] = log.level.to_s
     h[:short_message] = h.delete(:message) if log.message && !h.key?("short_message") && !h.key?(:short_message)
-    h[:request_uid] = h.delete(:tags).first if log.tags  && log.tags.count > 0
+    h[:request_uid] = h.delete(:tags).first if log.tags && log.tags.count > 0
     h
   end
 
@@ -61,12 +60,7 @@ class SemanticLogger::Appender::RabbitAppender < SemanticLogger::Subscriber
   def log(log)
     return false unless should_log?(log)
 
-    begin
-      @notifier.notify!(make_hash(log))
-    rescue => e
-      $logger.error message:"SemanticLogger::Appender::MyGraylogAppender >EXCEPTION> #{e}", exception: e,log: log
-    end
-
+    @notifier.notify!(make_hash(log))
     true
   end
 
@@ -111,7 +105,7 @@ class SemanticLogger::Notifier::RabbitNotifier
     gdata = @default_options.dup
     data.keys.each do |key|
       value, key_s = data[key], key.to_s
-      if ['host','level','version','short_message','full_message','timestamp','facility','line','file'].index(key_s)
+      if ['host', 'level', 'version', 'short_message', 'full_message', 'timestamp', 'facility', 'line', 'file'].index(key_s)
         gdata[key_s] = value
       elsif key_s == 'action'
         gdata["_application_action"] = value
