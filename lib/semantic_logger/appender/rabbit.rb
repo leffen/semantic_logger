@@ -2,7 +2,6 @@
 
 require 'uri'
 begin
-  require 'gelf'
   require 'bunny'
   require 'oj'
 
