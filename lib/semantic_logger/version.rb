@@ -1,3 +1,3 @@
 module SemanticLogger #:nodoc
-  VERSION = '3.4.0d'
+  VERSION = '3.4.0e'
 end

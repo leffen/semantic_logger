@@ -6,8 +6,9 @@ begin
   require 'oj'
 
   Oj.default_options = {:mode => :compat}
-rescue LoadError
-  raise 'Gem gelf is required for logging to Graylog. Please add the gem "gelf" to your Gemfile.'
+rescue => e
+  puts e.message
+  raise "Error in require part. Gems bunny and oj is required for running this appender"
 end
 
 
